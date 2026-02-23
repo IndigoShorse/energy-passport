@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_Слой_2" data-name="Слой 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2226.86 594.5">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: .03em;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2, .cls-5, .cls-7 {
+        fill: #ff6;
+      }
+
+      .cls-8 {
+        letter-spacing: .01em;
+      }
+
+      .cls-3 {
+        fill: #69c;
+      }
+
+      .cls-4 {
+        fill: #369;
+      }
+
+      .cls-5 {
+        font-family: Aboreto-Regular, Aboreto;
+      }
+
+      .cls-5, .cls-7 {
+        font-size: 200px;
+        stroke-width: 3px;
+      }
+
+      .cls-9 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-6 {
+        fill: #e2e2e2;
+      }
+
+      .cls-10 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-7 {
+        font-family: CastoroTitling-Regular, 'Castoro Titling';
+      }
+
+      .cls-11 {
+        letter-spacing: .02em;
+      }
+    </style>
+  </defs>
+  <g id="_Слой_1-2" data-name="Слой 1">
+    <g>
+      <rect class="cls-4" x=".5" y=".5" width="944.92" height="593.5" rx="12" ry="12"/>
+      <rect class="cls-3" x="68.76" y="47.93" width="797.12" height="498.63" rx="12" ry="12"/>
+      <polygon class="cls-2" points="480 141.2 438.03 261.32 470.34 240.65 456.83 325.88 507.61 200.69 474.43 223.68 480 141.2"/>
+      <path class="cls-6" d="m521.76,176.67c.14,3.3.21,6.65.21,10.03,0,3.69-.08,7.33-.25,10.93,40.88,18.41,69.34,59.51,69.34,107.26,0,64.94-52.64,117.58-117.58,117.58s-117.58-52.64-117.58-117.58c0-48.67,29.57-90.43,71.72-108.3-.13-3.26-.21-6.55-.21-9.89,0-3.69.08-7.34.25-10.93-53.12,18.85-91.16,69.54-91.16,129.12,0,75.65,61.33,136.98,136.98,136.98s136.98-61.33,136.98-136.98c0-58.66-36.87-108.69-88.7-128.22Z"/>
+    </g>
+    <text class="cls-7" transform="translate(1088.27 267.55) scale(1 1.16)"><tspan class="cls-1" x="0" y="0">ENE</tspan><tspan class="cls-8" x="430.79" y="0">R</tspan><tspan class="cls-11" x="569.39" y="0">GY</tspan></text>
+    <text class="cls-5" transform="translate(1092.47 526.5) scale(1 1.14)"><tspan class="cls-10" x="0" y="0">P</tspan><tspan class="cls-1" x="110.4" y="0">ASSPO</tspan><tspan class="cls-9" x="780.79" y="0">R</tspan><tspan class="cls-1" x="906.19" y="0">T</tspan></text>
+  </g>
+</svg>
