@@ -7,3 +7,21 @@
 </template>
 <script setup lang="ts">
 </script>
+
+<style>
+:root {
+  --ep-primary: #1f5d83;
+  --ep-text: #1c2b36;
+  --ep-background: #f4f7f7;
+}
+
+* { box-sizing: border-box; }
+html, body, #__nuxt, .v-application { min-height: 100%; }
+body {
+  margin: 0;
+  background: var(--ep-background);
+  color: var(--ep-text);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.v-application { background: var(--ep-background) !important; }
+</style>

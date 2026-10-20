@@ -7,6 +7,7 @@ import type {passportDetail} from "~/models/types/passportTypes";
 const max_step = 5;
 const step = ref<number>(1);
 const pending = ref<boolean>(false);
+const submitted = ref<boolean>(false);
 
 // Схема валидации для первого шага
 const validationSchemas = [
@@ -399,6 +400,7 @@ const onSubmit = handleSubmit(async (values) => {
 
     const response = await PassportData().post_passport_data(combinedData as passportDetail);
     pending.value = false;
+    submitted.value = true;
 
     // Переход на следующий шаг если нужно
     if (step.value < max_step) {
@@ -430,6 +432,9 @@ const goToStep = async (newStep: number) => {
 
 <template>
   <div class="container">
+    <v-alert v-if="submitted" class="successAlert" type="success" variant="tonal" closable @click:close="submitted = false">
+      Паспорт сохранён в демонстрационном режиме. Он уже появился в таблице паспортов.
+    </v-alert>
     <v-stepper v-model="step"
                :items="['Основная информация', 'Приложение №2', 'Приложение №3', 'Приложения №4, №5, №6', 'Приложения №11, №13']">
       <!-- Шаг 1 -->
@@ -439,7 +444,10 @@ const goToStep = async (newStep: number) => {
             <div class="stepLabel">Основная информация</div>
           </v-card-title>
           <v-card-text>
-            <v-form @submit.prevent="onSubmit">
+            <v-form class="form-grid" @submit.prevent="onSubmit">
+              <div class="form-section-title">
+                <div><strong>Сведения об обследовании</strong><small>Данные исполнителя и документа</small></div>
+              </div>
               <v-text-field
                   v-model="selfregulating_organization"
                   label="Саморегулируемая организация"
@@ -497,6 +505,9 @@ const goToStep = async (newStep: number) => {
                   required
               ></v-text-field>
 
+              <div class="form-section-title">
+                <div><strong>Сведения об организации</strong><small>Наименование, адрес и форма собственности</small></div>
+              </div>
               <v-text-field
                   v-model="name_organization"
                   label="Наименование организации"
@@ -541,6 +552,9 @@ const goToStep = async (newStep: number) => {
                   required
               ></v-text-field>
 
+              <div class="form-section-title">
+                <div><strong>Реквизиты и классификаторы</strong><small>Регистрационные данные организации</small></div>
+              </div>
               <v-text-field
                   v-model="ogrn"
                   label="ОГРН"
@@ -580,6 +594,9 @@ const goToStep = async (newStep: number) => {
                   required
               ></v-text-field>
 
+              <div class="form-section-title">
+                <div><strong>Ответственные лица</strong><small>Контакты по технической и энергетической части</small></div>
+              </div>
               <v-text-field
                   v-model="full_name_responsible_technical"
                   label="ФИО ответственного за техническую политику"
@@ -613,7 +630,10 @@ const goToStep = async (newStep: number) => {
             <div class="stepLabel">Приложение №2</div>
           </v-card-title>
           <v-card-text>
-            <v-form @submit.prevent="onSubmit">
+            <v-form class="form-grid" @submit.prevent="onSubmit">
+              <div class="form-section-title">
+                <div><strong>Производственная информация</strong><small>Отчётный год и сведения о выпускаемой продукции</small></div>
+              </div>
               <!-- Поле для ввода отчетного года -->
               <v-text-field
                   v-model="reporting_year"
@@ -912,7 +932,7 @@ const goToStep = async (newStep: number) => {
             <div class="stepLabel">Приложение №3</div>
           </v-card-title>
           <v-card-text>
-            <v-form @submit.prevent="onSubmit">
+            <v-form class="form-grid" @submit.prevent="onSubmit">
               <div class="array-input-group">
                 <h4>Количество оборудованных узлами (приборами) учета точек приема (поставки), всего</h4>
                 <div class="array-input-item">
@@ -1050,7 +1070,10 @@ const goToStep = async (newStep: number) => {
             <div class="stepLabel">Приложения №4, №5, №6</div>
           </v-card-title>
           <v-card-text>
-            <v-form @submit.prevent="onSubmit">
+            <v-form class="form-grid" @submit.prevent="onSubmit">
+              <div class="form-section-title">
+                <div><strong>Потребление ресурсов</strong><small>Показатели электроэнергии, тепла и воды за пять лет</small></div>
+              </div>
               <!-- Поле для ввода отчетного года -->
               <v-text-field
                   v-model="reporting_year"
@@ -1259,7 +1282,7 @@ const goToStep = async (newStep: number) => {
             <div class="stepLabel">Приложения №11, №13</div>
           </v-card-title>
           <v-card-text>
-            <v-form @submit.prevent="onSubmit">
+            <v-form class="form-grid" @submit.prevent="onSubmit">
               <!-- Приложение №11 -->
               <h3 class="app-title">
                 Приложение №11 - Показатели
@@ -1428,40 +1451,83 @@ const goToStep = async (newStep: number) => {
 
 <style scoped>
 .array-input-group {
-  margin: 20px 0;
-  padding: 15px;
-  border: 1px solid #eee;
-  border-radius: 5px;
+  margin: 24px 0;
+  padding: 20px;
+  border: 1px solid #dfe8ea;
+  border-radius: 10px;
+  background: #f9fbfb;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(120px, 1fr));
+  gap: 0 12px;
 }
 
 .array-input-group h4 {
-  margin-bottom: 15px;
-  color: #275c8c;
+  grid-column: 1 / -1;
+  margin-bottom: 18px;
+  color: #1f5d83;
+  font-size: 15px;
+  line-height: 1.35;
 }
 
 .array-input-item {
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 20px;
+}
+
+.form-grid > .form-section-title,
+.form-grid > .array-input-group,
+.form-grid > .app-title {
+  grid-column: 1 / -1;
+}
+
+.form-section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0 4px;
+  padding: 14px 16px;
+  border-left: 3px solid #4a9a86;
+  border-radius: 0 8px 8px 0;
+  background: #f1f7f6;
+}
+
+.form-section-title strong,
+.form-section-title small { display: block; }
+.form-section-title strong { color: #24495f; font-size: 15px; }
+.form-section-title small { margin-top: 2px; color: #697b84; font-size: 12px; }
 
 .container {
-  width: 1280px;
+  width: 100%;
+  max-width: 1240px;
   margin: 0 auto;
+  padding: 36px 24px 56px;
 }
 
+.successAlert { margin-bottom: 18px; border-radius: 10px; }
+
 .stepCard {
-  padding: 0 40px;
+  padding: 8px 40px 24px;
 }
 
 .stepCard .stepLabel {
+  color: #1f5d83;
   font-size: 22px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   text-align: center;
   font-weight: 600;
 }
 
 .stepCard .v-input {
-  margin-top: 8px;
+  margin-top: 12px;
 }
+
+.form-grid > :deep(.v-input) { min-width: 0; }
+.array-input-group :deep(.v-input) { margin-top: 0; }
 
 @keyframes fill-step {
   0% {
@@ -1506,6 +1572,10 @@ const goToStep = async (newStep: number) => {
 .mainBtn {
   margin: 10px;
   padding: 10px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 /* Стили для stepper */
@@ -1522,5 +1592,31 @@ const goToStep = async (newStep: number) => {
 /* Для hover эффекта */
 :deep(.v-stepper-item--selected:hover .v-avatar) {
   background-color: #3275b2 !important;
+}
+
+:deep(.v-stepper) {
+  overflow: hidden;
+  border: 1px solid #e1e9eb;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(31, 63, 79, .07);
+}
+
+:deep(.v-stepper-header) { padding: 8px 16px; border-bottom: 1px solid #e5edef; }
+:deep(.v-field) { border-radius: 8px; }
+
+@media (max-width: 720px) {
+  .container { padding: 24px 16px 40px; }
+  .stepCard { padding: 4px 16px 20px; }
+  .stepCard .stepLabel { font-size: 19px; }
+  :deep(.v-stepper-header) { overflow-x: auto; justify-content: flex-start; }
+  :deep(.v-stepper-item) { min-width: max-content; }
+  .buttonsContainer { gap: 4px; }
+  .mainBtn { flex: 1; margin: 8px 0; }
+  .form-grid { grid-template-columns: 1fr; }
+  .array-input-group { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 16px; }
+}
+
+@media (max-width: 420px) {
+  .array-input-group { grid-template-columns: 1fr; }
 }
 </style>

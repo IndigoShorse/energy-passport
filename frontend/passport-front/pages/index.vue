@@ -105,92 +105,18 @@
 </template>
 
 <style scoped>
-
-.mainGrid {
-  margin-top: 30px;
-  display: grid;
-  gap: 10px;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.cardIcon {
-  width: 50px;
-  left: 0;
-}
-
-.cardTitle {
-  height: 50px;
-  position: relative;
-  display: flex;
-  font-size: 20px;
-  align-items: center;
-  gap: 5px;
-  width: 100%;
-  justify-content: start;
-}
-
-.cardText {
-  text-align: start;
-  font-size: 15px;
-  padding: 20px;
-}
-
-.mainBody {
-  width: 100%;
-  background: #eee;
-  flex-shrink: 0;
-  flex-grow: 1;
-}
-
-.mainBody .mainContainer {
-  width: 1280px;
-  margin: 0 auto;
-  padding: 0 30px;
-}
-
-.buttonsContainer {
-  width: 1280px;
-  margin: 0 auto;
-  padding-left: 100px;
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-}
-
-.mainImg {
-  height: 300px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 40px 0 60px;
-  background-size: cover;
-  background-position: right bottom;
-  object-fit: contain;
-  object-position: center;
-  background-image: url(assets/img/wide-angle-shot-many-electric-posts-dry-landscape-cloudy-sky.jpg);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.mainContainer {
-  width: 1280px;
-  gap: 10px;
-  padding-left: 100px;
-  margin: 0 auto;
-}
-
-.mainLabel {
-  backdrop-filter: invert(30%);
-  padding: 20px;
-  width: 100%;
-  color: #fff;
-  font-size: 30px;
-  font-weight: 600;
-}
-
-.mainBtn {
-  width: fit-content;
-  margin-top: 10px;
-}
+.mainImg { display: flex; flex-direction: column; justify-content: center; min-height: 330px; width: 100%; padding: 56px 0; background: linear-gradient(90deg, rgba(17, 55, 78, .86), rgba(17, 55, 78, .45)), url('~/assets/img/wide-angle-shot-many-electric-posts-dry-landscape-cloudy-sky.jpg') right bottom / cover; }
+.mainContainer, .buttonsContainer, .mainBody .mainContainer { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+.mainLabel { width: 100%; padding: 0; color: #fff; font-size: clamp(30px, 4vw, 44px); font-weight: 700; letter-spacing: -.02em; }
+.buttonsContainer { display: flex; gap: 12px; }
+.mainBtn { margin-top: 18px; padding: 0 20px; border-radius: 8px; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.mainBody { flex-grow: 1; width: 100%; background: #f4f7f7; }
+.mainGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 40px 0 56px; }
+.mainGrid :deep(.v-card) { width: 100% !important; overflow: hidden; border: 1px solid #e1e9eb; border-radius: 14px; box-shadow: 0 8px 24px rgba(31, 63, 79, .07) !important; }
+.mainGrid :deep(.v-card-item) { padding: 20px 22px 4px; }
+.cardIcon { width: 42px; }
+.cardTitle { display: flex; align-items: center; gap: 10px; min-height: 42px; width: 100%; font-size: 19px; }
+.cardText { padding: 16px 22px 24px; color: #52636c; font-size: 15px; line-height: 1.6; text-align: start; }
+@media (max-width: 720px) { .mainImg { min-height: 290px; padding: 42px 0; } .mainGrid { grid-template-columns: 1fr; padding: 28px 0 40px; } .buttonsContainer { flex-wrap: wrap; } }
+@media (max-width: 520px) { .mainContainer, .buttonsContainer, .mainBody .mainContainer { padding-right: 16px; padding-left: 16px; } .mainBtn { width: 100%; } }
 </style>

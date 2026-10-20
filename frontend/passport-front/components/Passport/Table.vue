@@ -18,7 +18,7 @@ import passportData from "~/composables/PassportData";
 
 <template>
   <div class="container">
-    <v-sheet elevation="4">
+    <v-sheet class="tableSheet" elevation="0">
       <v-table theme="light" density="comfortable">
         <thead>
         <tr>
@@ -47,14 +47,14 @@ import passportData from "~/composables/PassportData";
 </template>
 
 <style scoped>
-.container {
-  width: 1280px;
-  margin: 0 auto;
-}
+.container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 40px 24px 56px; }
+.tableSheet { overflow: hidden; border: 1px solid #e1e9eb; border-radius: 14px; box-shadow: 0 8px 24px rgba(31, 63, 79, .07); }
+.tableSheet :deep(th) { background: #edf4f5; color: #31566b; font-size: 13px; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; }
+.tableSheet :deep(td), .tableSheet :deep(th) { padding: 16px 20px !important; }
 .table-row:hover {
-  background: #eee;
-  color: #333;
-  font-weight: 600;
+  background: #f3f8f7;
+  color: #1f5d83;
   cursor: pointer;
 }
+@media (max-width: 520px) { .container { padding: 24px 16px 40px; } .tableSheet :deep(td), .tableSheet :deep(th) { padding: 13px 14px !important; } }
 </style>
